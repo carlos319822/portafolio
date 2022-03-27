@@ -7,7 +7,7 @@ export interface InfoPagina {
         nombre_corto?: string;
         facebook?: string;
         instagram?: string;
-        'equipo de trabajo'?: any[];
+        equipo_trabajo?: any[];
       }
 
 
