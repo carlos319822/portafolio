@@ -9,6 +9,7 @@ export class InfoPaginaService {
 
   info:InfoPagina ={};
   cargada = false;
+  equipo: any[] =[];
 
   constructor(private http: HttpClient) {
 
@@ -16,6 +17,14 @@ export class InfoPaginaService {
     //console.log('Servicio de infoPagina listo')
 
     //leer el archivo json
+    this.cargarInfo();
+    this.cargarEquipo();
+
+    
+   }
+
+
+   private cargarInfo(){
 
     this.http.get('assets/data/data-pagina.json')
 
@@ -27,6 +36,26 @@ export class InfoPaginaService {
       //console.log(resp)
 
       console.log( resp);
-    })
+    });
+   }
+
+
+   private cargarEquipo() {
+
+
+    this.http.get('https://portafolio-8d38e-default-rtdb.firebaseio.com/equipo.json')
+
+    //.subscribe((resp: any)
+    .subscribe((resp: any) =>{
+
+      console.log( resp);
+      
+      this.equipo =resp;
+      
+
+      //console.log(resp)
+
+      
+    });
    }
 }
